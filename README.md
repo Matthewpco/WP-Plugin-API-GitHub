@@ -1,4 +1,4 @@
-![](https://raw.githubusercontent.com/Matthewpco/.jpg)
+![](https://raw.githubusercontent.com/Matthewpco/WP-Plugin-Github-API/main/wp-plugin-github-api.jpg)
 
 # This is a custom WordPress plugin to add Github API functionality and display user data as well as repository info in a block or template.
 
@@ -17,4 +17,5 @@
 - CSS
 - PHP
 - WordPress
+- APIs
   <br>
