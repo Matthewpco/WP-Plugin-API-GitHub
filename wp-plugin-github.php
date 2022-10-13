@@ -2,8 +2,8 @@
 /**
  * Plugin Name: Github-shortcode-content
  * Plugin URI: https://www.wpwebdevelopment.com
- * Description: Display content using a shortcode to insert in a page or post
- * Version: 1.0 TODO separate html css and js then include them in main file
+ * Description: Display content using a shortcode to insert API data in a page or post
+ * Version: 1.3 
  * Text Domain: github-shortcode-content
  * Author: Gary Matthew Payne
  * Author URI: https://www.wpwebdevelopment.com
