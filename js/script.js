@@ -6,25 +6,40 @@ var repoDataSection = document.querySelector(".repo-data");
 var backButton = document.querySelector("button");
 var filterInput = document.querySelector("input");
 var gitUserName = "Matthewpco";
+// variable set to identify where shrotcode is active and run api scripts 
+var scActive;
 
 
-// Fetch Github user data
-const getUserData = async function() {
+// Check to see if the class from shortcode is present and set true or false
+const activateSC = () => {
+	if (overview == null) {
+		console.log("SC inactive");
+		scActive = false;
+	} else if (overview !== null) {
+		console.log("SC active");
+		scActive = true;
+	}
+}
+activateSC();
+// If shortcode class is present run fetch script
+if (scActive == true) {
+	// Fetch Github user data
+	const getUserData = async function() {
     const res = await fetch(
         `https://api.github.com/users/${gitUserName}`
         );
         const uData = await res.json();
         popData(uData);
 }
-getUserData();
 
+getUserData();
 
 // Populate fetched user data 
 let popData = (uData) => {
    let dataBody =  document.createElement("div");
-   dataBody.classList.add("user-info");
+   dataBody.classList.add("user-info", "github-sc-active");
    dataBody.innerHTML = `<figure>
-   <img alt="user avatar" src=${uData.avatar_url} />
+   <img class="imgClass" alt="user avatar" src=${uData.avatar_url} />
  </figure>
  <div>
    <p><strong>Name:</strong> ${uData.name}</p>
@@ -40,7 +55,7 @@ getRepoData();
 // Fetch Github repo data
 const getRepoData = async function () {
   const res = await fetch(
-    `https://api.github.com/users/${gitUserName}/repos?per_page=100&sort=updated`
+    `https://api.github.com/users/${gitUserName}/repos?per_page=9&sort=updated`
   );
 
   const repoData = await res.json();
@@ -53,7 +68,7 @@ const popRepo = (repoData) => {
   for (const repo of repoData) {
     const repoLi = document.createElement("li");
     repoLi.classList.add("repo");
-    repoLi.innerHTML = `<h3> ${repo.name} </h3>`;
+    repoLi.innerHTML = `<h3 class="h3Class"> ${repo.name} </h3>`;
     repoList.append(repoLi);
   }
 };
@@ -89,7 +104,7 @@ const popRepoSubData = (repoSubData, languages) => {
   repoDataSection.innerHTML = "";
   const repoSubDiv = document.createElement("div");
   repoSubDiv.innerHTML = `
-  <h3>Name: ${repoSubData.name}</h3>
+  <h3 class="h3Class">Name: ${repoSubData.name}</h3>
     <p>Description: ${repoSubData.description}</p>
     <p>Default Branch: ${repoSubData.default_branch}</p>
     <p>Languages: ${languages.join(", ")}</p>
@@ -125,3 +140,8 @@ filterInput.addEventListener("input", (e) => {
     }
   }
 });
+}
+
+else if (scActive == false) {
+	console.log("SC was not found and script execution halted.");
+}
