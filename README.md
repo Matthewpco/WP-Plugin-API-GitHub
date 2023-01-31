@@ -6,7 +6,7 @@
 
 ## 🙋‍♂️ Introduction
 
-- This plugin is made to contact GitHub's API and get back a block of styled information to display user data and repository info through WordPress best practices.
+- This plugin is made to contact GitHub's API using the latest JavaScript Fetch function and return a styled template literal to display user data and repository info through WordPress best practices. Custom headless WordPress setups can be implemented with API functionality like this anywhere on the site.
 
 <br>
 
@@ -18,4 +18,5 @@
 - PHP
 - WordPress
 - APIs
+- Plugin Development
   <br>
